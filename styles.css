@@ -1,0 +1,87 @@
+h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.cell {
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    background-color: grey;
+    border: 3px solid white;
+    border-radius: 5px;
+    font-size: 3.5rem;
+    font-family: sans-serif;
+    text-align: center;
+    line-height: 2.5rem;
+}
+
+#reset-button {
+    margin: 50px auto 0 auto;
+    width: 150px;
+    height: 50px;
+    display: block;    
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: sans-serif;
+    padding: 0.5rem;
+}
+
+#player1-dialog, #player2-dialog {
+    width: 350px;
+    height: 200px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#player1-dialog form, #player2-dialog form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center;
+    gap: 10px;
+}
+
+#player1-dialog label, #player2-dialog label {
+    font-size: 1.5rem;
+    margin-top: 30px
+}
+
+#player1-dialog input, #player2-dialog input {
+    width: 90%;
+    height: 30px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 5px;
+}
+
+#player1-dialog button, #player2-dialog button {
+    width: 100px;
+    height: 30px;
+    background-color: rgba(0, 72, 77, 0.822);
+    color: white;
+    border: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+#winner-dialog {
+}
+
