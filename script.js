@@ -16,6 +16,7 @@ let players = {
 let gameController = {
   currentPlayer: players.player1,
   winner: "",
+  running: true,
   togglePlayer() {
     if (this.currentPlayer === players.player1) {
       this.currentPlayer = players.player2;
@@ -30,49 +31,60 @@ let gameController = {
       gameBoard.board[0] === gameBoard.board[1] &&
       gameBoard.board[1] === gameBoard.board[2]
     ) {
+      gameController.running = false;
       this.announceWinner(gameBoard.board[0]);
     } else if (
       gameBoard.board[3] !== "" &&
       gameBoard.board[3] === gameBoard.board[4] &&
       gameBoard.board[4] === gameBoard.board[5]
     ) {
+      gameController.running = false;
       this.announceWinner(gameBoard.board[3]);
     } else if (
       gameBoard.board[6] !== "" &&
       gameBoard.board[6] === gameBoard.board[7] &&
       gameBoard.board[7] === gameBoard.board[8]
     ) {
+      gameController.running = false;
       this.announceWinner(gameBoard.board[6]);
     } else if (
       gameBoard.board[0] !== "" &&
       gameBoard.board[0] === gameBoard.board[3] &&
       gameBoard.board[3] === gameBoard.board[6]
     ) {
+      gameController.running = false;
       this.announceWinner(gameBoard.board[0]);
     } else if (
       gameBoard.board[1] !== "" &&
       gameBoard.board[1] === gameBoard.board[4] &&
       gameBoard.board[4] === gameBoard.board[7]
     ) {
+      gameController.running = false;
       this.announceWinner(gameBoard.board[1]);
     } else if (
       gameBoard.board[2] !== "" &&
       gameBoard.board[2] === gameBoard.board[5] &&
       gameBoard.board[5] === gameBoard.board[8]
     ) {
+      gameController.running = false;
       this.announceWinner(gameBoard.board[2]);
     } else if (
       gameBoard.board[0] !== "" &&
       gameBoard.board[0] === gameBoard.board[4] &&
       gameBoard.board[4] === gameBoard.board[8]
     ) {
+      gameController.running = false;
       this.announceWinner(gameBoard.board[0]);
     } else if (
       gameBoard.board[2] !== "" &&
       gameBoard.board[2] === gameBoard.board[4] &&
       gameBoard.board[4] === gameBoard.board[6]
     ) {
+      gameController.running = false;
       this.announceWinner(gameBoard.board[2]);
+    } else if (gameBoard.board.includes("") === false) {
+      gameController.running = false;
+      this.announceDraw();
     }
   },
   announceWinner(marker) {
@@ -94,7 +106,8 @@ const grid = document.querySelector(".grid");
 const player1Dialog = document.querySelector("#player1-dialog");
 const player2Dialog = document.querySelector("#player2-dialog");
 const winnerDialog = document.createElement("dialog");
-winnerDialog.style.cssText = "display: flex; align-items: center; justify-content: center; width: 200px; height: 150px; border: none; border-radius: 10px; font-family:Arial, Helvetica, sans-serif; font-size: 1.2rem;";
+winnerDialog.style.cssText =
+  "display: flex; align-items: center; justify-content: center; width: 200px; height: 150px; border: none; border-radius: 10px; font-family:Arial, Helvetica, sans-serif; font-size: 1.2rem;";
 winnerDialog.closedBy = "any";
 document.body.appendChild(winnerDialog);
 const resetButton = document.querySelector("#reset-button");
@@ -115,6 +128,9 @@ player2Dialog.addEventListener("submit", function (event) {
 player1Dialog.showModal();
 
 grid.addEventListener("click", (event) => {
+  if (gameController.running === false) {
+    return;
+  }
   let cells = document.querySelectorAll(".cell");
   for (let index = 0; index < cells.length; index++) {
     if (event.target === cells[index]) {
@@ -130,9 +146,6 @@ grid.addEventListener("click", (event) => {
       }
     }
   }
-  if (gameBoard.board.includes('') === false) {
-    gameController.announceDraw();
-  }
 });
 
 resetButton.addEventListener("click", function () {
@@ -143,5 +156,5 @@ resetButton.addEventListener("click", function () {
   gameBoard.board = Array(9).fill("");
   gameController.currentPlayer = players.player1;
   gameController.winner = "";
+  gameController.running = true;
 });
-
