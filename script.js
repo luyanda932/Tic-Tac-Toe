@@ -21,7 +21,6 @@ let gameController = {
     this.currentPlayer = this.currentPlayer === players.player1 ? players.player2 : players.player1; 
   },
   checkWinner() {
-    console.log(gameBoard.board);
     if (
       gameBoard.board[0] !== "" &&
       gameBoard.board[0] === gameBoard.board[1] &&
@@ -93,23 +92,23 @@ let gameController = {
   },
   announceWinner(marker) {
     if (marker === "X") {
-      winnerDialog.innerText = "Player 1 is the winner";
-      winnerDialog.showModal();
+      gameDialog.innerText = "Player 1 is the winner";
+      gameDialog.showModal();
     } else {
-      winnerDialog.innerText = "Player 2 is the winner";
-      winnerDialog.showModal();
+      gameDialog.innerText = "Player 2 is the winner";
+      gameDialog.showModal();
     }
   },
   announceDraw() {
-    winnerDialog.innerText = "It's a draw";
-    winnerDialog.showModal();
+    gameDialog.innerText = "It's a draw";
+    gameDialog.showModal();
   },
   showWinningPattern(cell1, cell2, cell3) {
     const cells = document.querySelectorAll(".cell");
     for (let index = 0; index < cells.length; index++) {
       if (index === cell1 || index === cell2 || index === cell3) {
-        cells[index].style.color = "skyblue";
-        cells[index].style.background = "rgba(255, 255, 255, 0.8)";
+        cells[index].style.color = "rgb(105, 182, 212)";
+        cells[index].style.background = "rgba(255, 255, 255, 0.89)";
       }
     }
   },
@@ -118,8 +117,8 @@ let gameController = {
 const grid = document.querySelector(".grid");
 const player1Dialog = document.querySelector("#player1-dialog");
 const player2Dialog = document.querySelector("#player2-dialog");
-const winnerDialog = document.querySelector("#winner-dialog"); 
-winnerDialog.closedBy = "any";
+const gameDialog = document.querySelector("#game-dialog"); 
+gameDialog.closedBy = "any";
 const resetButton = document.querySelector("#reset-button");
 
 player1Dialog.addEventListener("submit", function (event) {
@@ -145,7 +144,8 @@ grid.addEventListener("click", (event) => {
   for (let index = 0; index < cells.length; index++) {
     if (event.target === cells[index]) {
       if (gameBoard.board[index] === "X" || gameBoard.board[index] === "O") {
-        alert("This cell is already taken");
+        gameDialog.innerText = "This cell is already taken";
+        gameDialog.showModal();
         return;
       }
       if (gameBoard.board[index] === "") {
@@ -163,7 +163,7 @@ resetButton.addEventListener("click", function () {
   for (const cell of cells) {
     cell.innerText = "";
     cell.style.color = "white";
-    cell.style.background = "rgb(118, 191, 219)";
+    cell.style.background = "rgb(105, 182, 212)";
   }
   gameBoard.board = Array(9).fill("");
   gameController.currentPlayer = players.player1;

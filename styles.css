@@ -24,7 +24,7 @@ h1 {
     align-items: center;    
     justify-content: center;
     color: white;
-    background-color: rgb(118, 191, 219);
+    background-color: rgb(105, 182, 212);
     border-radius: 5px;
     font-size: 3rem;
     font-family: Permanent Marker, cursive;
@@ -45,6 +45,7 @@ h1 {
     font-size: 1rem;
     font-family: sans-serif;
     padding: 0.5rem;
+    cursor: pointer;
 }
 
 #player1-dialog, #player2-dialog {
