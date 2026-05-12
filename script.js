@@ -118,7 +118,7 @@ player2Dialog.addEventListener("submit", function (event) {
   player2Dialog.close();
 });
 
-player1Dialog.showModal();
+// player1Dialog.showModal();
 
 grid.addEventListener("click", (event) => {
   if (gameController.running === false) {
