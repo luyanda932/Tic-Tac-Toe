@@ -28,6 +28,7 @@ let gameController = {
       gameBoard.board[1] === gameBoard.board[2]
     ) {
       gameController.running = false;
+      this.showWinningPattern(0, 1, 2);
       this.announceWinner(gameBoard.board[0]);
     } else if (
       gameBoard.board[3] !== "" &&
@@ -35,6 +36,7 @@ let gameController = {
       gameBoard.board[4] === gameBoard.board[5]
     ) {
       gameController.running = false;
+      this.showWinningPattern(3, 4, 5);
       this.announceWinner(gameBoard.board[3]);
     } else if (
       gameBoard.board[6] !== "" &&
@@ -42,6 +44,7 @@ let gameController = {
       gameBoard.board[7] === gameBoard.board[8]
     ) {
       gameController.running = false;
+      this.showWinningPattern(6, 7, 8);
       this.announceWinner(gameBoard.board[6]);
     } else if (
       gameBoard.board[0] !== "" &&
@@ -49,6 +52,7 @@ let gameController = {
       gameBoard.board[3] === gameBoard.board[6]
     ) {
       gameController.running = false;
+      this.showWinningPattern(0, 3, 6);
       this.announceWinner(gameBoard.board[0]);
     } else if (
       gameBoard.board[1] !== "" &&
@@ -56,6 +60,7 @@ let gameController = {
       gameBoard.board[4] === gameBoard.board[7]
     ) {
       gameController.running = false;
+      this.showWinningPattern(1, 4, 7);
       this.announceWinner(gameBoard.board[1]);
     } else if (
       gameBoard.board[2] !== "" &&
@@ -63,6 +68,7 @@ let gameController = {
       gameBoard.board[5] === gameBoard.board[8]
     ) {
       gameController.running = false;
+      this.showWinningPattern(2, 5, 8);
       this.announceWinner(gameBoard.board[2]);
     } else if (
       gameBoard.board[0] !== "" &&
@@ -70,6 +76,7 @@ let gameController = {
       gameBoard.board[4] === gameBoard.board[8]
     ) {
       gameController.running = false;
+      this.showWinningPattern(0, 4, 8);
       this.announceWinner(gameBoard.board[0]);
     } else if (
       gameBoard.board[2] !== "" &&
@@ -77,6 +84,7 @@ let gameController = {
       gameBoard.board[4] === gameBoard.board[6]
     ) {
       gameController.running = false;
+      this.showWinningPattern(2, 4, 6);
       this.announceWinner(gameBoard.board[2]);
     } else if (gameBoard.board.includes("") === false) {
       gameController.running = false;
@@ -85,16 +93,25 @@ let gameController = {
   },
   announceWinner(marker) {
     if (marker === "X") {
-      winnerDialog.innerText = players.player1.name + " is the winner";
+      winnerDialog.innerText = "Player 1 is the winner";
       winnerDialog.showModal();
     } else {
-      winnerDialog.innerText = players.player2.name + " is the winner";
+      winnerDialog.innerText = "Player 2 is the winner";
       winnerDialog.showModal();
     }
   },
   announceDraw() {
     winnerDialog.innerText = "It's a draw";
     winnerDialog.showModal();
+  },
+  showWinningPattern(cell1, cell2, cell3) {
+    const cells = document.querySelectorAll(".cell");
+    for (let index = 0; index < cells.length; index++) {
+      if (index === cell1 || index === cell2 || index === cell3) {
+        cells[index].style.color = "skyblue";
+        cells[index].style.background = "rgba(255, 255, 255, 0.8)";
+      }
+    }
   },
 };
 
@@ -145,6 +162,8 @@ resetButton.addEventListener("click", function () {
   let cells = document.querySelectorAll(".cell");
   for (const cell of cells) {
     cell.innerText = "";
+    cell.style.color = "white";
+    cell.style.background = "rgb(118, 191, 219)";
   }
   gameBoard.board = Array(9).fill("");
   gameController.currentPlayer = players.player1;
