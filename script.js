@@ -18,11 +18,7 @@ let gameController = {
   winner: "",
   running: true,
   togglePlayer() {
-    if (this.currentPlayer === players.player1) {
-      this.currentPlayer = players.player2;
-    } else {
-      this.currentPlayer = players.player1;
-    }
+    this.currentPlayer = this.currentPlayer === players.player1 ? players.player2 : players.player1; 
   },
   checkWinner() {
     console.log(gameBoard.board);
@@ -105,11 +101,8 @@ let gameController = {
 const grid = document.querySelector(".grid");
 const player1Dialog = document.querySelector("#player1-dialog");
 const player2Dialog = document.querySelector("#player2-dialog");
-const winnerDialog = document.createElement("dialog");
-winnerDialog.style.cssText =
-  "display: flex; align-items: center; justify-content: center; width: 200px; height: 150px; border: none; border-radius: 10px; font-family:Arial, Helvetica, sans-serif; font-size: 1.2rem;";
+const winnerDialog = document.querySelector("#winner-dialog"); 
 winnerDialog.closedBy = "any";
-document.body.appendChild(winnerDialog);
 const resetButton = document.querySelector("#reset-button");
 
 player1Dialog.addEventListener("submit", function (event) {
