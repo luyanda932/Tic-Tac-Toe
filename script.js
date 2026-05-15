@@ -93,10 +93,14 @@ let gameController = {
   announceWinner(marker) {
     if (marker === "X") {
       gameDialog.innerText = "Player 1 is the winner";
+      setTimeout(function() {
       gameDialog.showModal();
+}, 2000);
     } else {
       gameDialog.innerText = "Player 2 is the winner";
+      setTimeout(function() {
       gameDialog.showModal();
+}, 2000);
     }
   },
   announceDraw() {
