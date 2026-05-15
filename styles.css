@@ -1,31 +1,4 @@
 body {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    background-color: rgb(105, 182, 212);
-}
-
-.player1-info, .player2-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    padding-bottom: 50px;
-}
-
-.player1-info {
-    padding: 0px 0px 140px 140px;
-}
-
-.player2-info {
-    padding: 0px 140px 140px 0px;
-}
-
-.player1-info span, .player2-info span {
-    text-align: center;
-    font-family: Permanent Marker, cursive;
-    font-size: 3.5rem;
-    margin-top: -20px;
 }
 
 h1 {

@@ -10,46 +10,36 @@
 </head>
 
 <body>
-    <div class="player1-info">
-        <h1>Player 1</h1>
-        <span>X</span>
+    <h1>Tic Tac Toe</h1>
+    <div class="grid">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
     </div>
-    <div class="gameArea">
-        <h1>Tic Tac Toe</h1>
-        <div class="grid">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-        </div>
-        <dialog id="player1-dialog">
-            <form>
-                <label for="player1-name">Player 1 name:</label>
-                <input type="text" id="player1-name" name="player1-name">
-                <button type="submit">Submit</button>
-            </form>
-        </dialog>
-        <dialog id="player2-dialog">
-            <form>
-                <label for="player2-name">Player 2 name:</label>
-                <input type="text" id="player2-name" name="player2-name">
-                <button type="submit">Submit</button>
-            </form>
-        </dialog>
-        <dialog id="game-dialog" closeBy="any"></dialog>
-
-        </dialog>
-        <button id="reset-button">Reset Game</button>
-    </div>
-    <div class="player2-info">
-        <h1>Player 2</h1>
-        <span>O</span>
-    </div>
+    <dialog id="player1-dialog">
+        <form>
+            <label for="player1-name">Player 1 name:</label>
+            <input type="text" id="player1-name" name="player1-name">
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
+    <dialog id="player2-dialog">
+        <form>
+            <label for="player2-name">Player 2 name:</label>
+            <input type="text" id="player2-name" name="player2-name">
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
+    <dialog id="game-dialog" closeBy="any"></dialog>
+    
+    </dialog>
+    <button id="reset-button">Reset Game</button>
 </body>
 
 </html>
