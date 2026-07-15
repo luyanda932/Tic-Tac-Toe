@@ -112,7 +112,7 @@ let gameController = {
     for (let index = 0; index < cells.length; index++) {
       if (index === cell1 || index === cell2 || index === cell3) {
         cells[index].style.color = "rgb(105, 182, 212)";
-        cells[index].style.background = "rgba(255, 255, 255, 0.89)";
+        cells[index].style.background = "white";
       }
     }
   },
